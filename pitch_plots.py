@@ -26,25 +26,35 @@ st.write(
 # Get pitchers for this year and last 3 years
 data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_player_list.csv')
 
+# Create a dictionary of player names and their MLBAM IDs
+player_dict = data.apply(lambda row: (f"{row['name_first']} {row['name_last']}", row['key_mlbam']), axis=1).to_dict()
+
+
 # Get full names of players
-full_names = data.apply(lambda row: f"{row['name_first']} {row['name_last']}", axis=1).tolist()
+full_names = list(player_dict.keys())
 full_names.sort()
 full_names = [s.title() for s in full_names]
 
 # Default player selection
 default_index = full_names.index('Spencer Schwellenbach')
 entered_name = st.selectbox("Pick an MLB Player.", full_names, index=default_index)
+mlbam_id = player_dict[entered_name]
+
+# Get full names of players
+#full_names = data.apply(lambda row: f"{row['name_first']} {row['name_last']}", axis=1).tolist()
+#full_names.sort()
+#full_names = [s.title() for s in full_names]
+
+# Default player selection
+#default_index = full_names.index('Spencer Schwellenbach')
+#entered_name = st.selectbox("Pick an MLB Player.", full_names, index=default_index)
 name_first = entered_name.split(' ')[0]
 name_last = entered_name.split(' ')[1]
 
 # Get either game dates or game matchups, or both in list
 game_list = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_game_list.csv')
-# Reformat names in game_list from 'last name, first name' to 'first name last name'
-game_list['player_name'] = game_list['player_name'].apply(lambda name: ' '.join(name.split(', ')[::-1]))
-
-# Filter game_list based on entered name
-#filtered_game_list = game_list[game_list['player_name'] == entered_name]
-filtered_game_list = game_list[game_list['player_name'].str.contains(entered_name, na = False)]
+# Filter game_list based on mlbam id of entered name
+filtered_game_list = game_list[game_list['pitcher'] == mlbam_id]
 
 # Ensure the filtered_game_list has the necessary columns
 if 'game_date' in filtered_game_list.columns and 'matchup' in filtered_game_list.columns:
