@@ -38,7 +38,31 @@ name_first = entered_name.split(' ')[0]
 name_last = entered_name.split(' ')[1]
 
 # Get either game dates or game matchups, or both in list
+game_list = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_game_list.csv')
+# Reformat names in game_list from 'last name, first name' to 'first name last name'
+game_list['player_name'] = game_list['player_name'].apply(lambda name: ' '.join(name.split(', ')[::-1]))
 
+# Filter game_list based on entered name
+#filtered_game_list = game_list[game_list['player_name'] == entered_name]
+filtered_game_list = game_list[game_list['player_name'].str.contains(entered_name, na = False)]
+
+# Ensure the filtered_game_list has the necessary columns
+if 'game_date' in filtered_game_list.columns and 'matchup' in filtered_game_list.columns:
+    # Create a list of formatted game dates and matchups
+    game_options = filtered_game_list.apply(lambda row: f"{row['game_date']} - {row['matchup']}", axis=1).tolist()
+    game_options.sort()
+else:
+    game_options = []
+
+entered_game = st.selectbox("Pick a game to plot.", game_options)
+
+# Filter game_list based on entered name
+#game_list = game_list[game_list['player_name'] == entered_name]
+#game_list = game_list['game_date'].tolist()
+#game_list.sort()
+#game_list = [str(s) for s in game_list]
+
+#entered_game = st.selectbox("Pick a game to plot.", game_list)
 
 # Read in files
 
