@@ -26,6 +26,16 @@ st.write(
 # Get pitchers for this year and last 3 years
 data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_player_list.csv')
 
+# Get full names of players
+full_names = data.apply(lambda row: f"{row['name_first']} {row['name_last']}", axis=1).tolist()
+full_names.sort()
+full_names = [s.title() for s in full_names]
+
+# Default player selection
+default_index = full_names.index('Spencer Schwellenbach')
+entered_name = st.selectbox("Pick an MLB Player.", full_names, index=default_index)
+name_first = entered_name.split(' ')[0]
+name_last = entered_name.split(' ')[1]
 
 # Get either game dates or game matchups, or both in list
 
