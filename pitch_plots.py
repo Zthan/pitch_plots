@@ -24,6 +24,7 @@ st.write(
 
 
 # Get pitchers for this year and last 3 years
+data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_player_list.csv')
 
 
 # Get either game dates or game matchups, or both in list
