@@ -80,10 +80,22 @@ entered_game = st.selectbox("Pick a game to plot.", filtered_game_list['option']
 
 # make colorby options selectable
 colorby_options = ['pitch_type', 'description', 'release_speed', 'launch_speed', 'hit_distance_sc']
-entered_colorby = st.selectbox("Pick a colorby option.", colorby_options)
+entered_colorby = st.selectbox("Pick a Color By option.", colorby_options)
 
 # Create pitch plot, capture image, and display
 game_date = entered_game.split(' - ')[0]
 pitcher_data = statcast_pitcher(game_date, game_date, mlbam_id)
+
+# create pitch type filter
+#pitch_filter = st.selectbox("Pick a pitch type to filter by.", pitcher_data['pitch_type'].unique())
+#pitcher_data = pitcher_data[pitcher_data['pitch_type'] == pitch_filter]
+
+# create pitch type filter
+pitch_types = ['All'] + list(pitcher_data['pitch_type'].unique())
+pitch_filter = st.selectbox("Pick a pitch type to filter by.", pitch_types)
+
+if pitch_filter != 'All':
+    pitcher_data = pitcher_data[pitcher_data['pitch_type'] == pitch_filter]
+
 plot_img = plot_strike_zone(pitcher_data, title=f"{entered_name} - {entered_game}", colorby='pitch_type', legend_title='pitch_type', annotation=entered_colorby)
 st.pyplot(plot_img.figure)
