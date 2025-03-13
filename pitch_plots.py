@@ -89,7 +89,7 @@ filtered_game_list = game_list[game_list['pitcher'] == mlbam_id]
 entered_game = st.selectbox("Pick a game to plot.", filtered_game_list['option'])
 
 # make colorby options selectable
-colorby_options = ['pitch_type', 'description', 'release_speed', 'launch_speed', 'hit_distance_sc',
+colorby_options = ['pitch_type', 'events', 'release_speed', 'launch_speed', 'hit_distance_sc',
                    'bb_type', 'release_extension']
 entered_colorby = st.selectbox("Pick a Color By option.", colorby_options)
 
@@ -100,6 +100,8 @@ pitcher_data = statcast_pitcher(game_date, game_date, mlbam_id)
 # create pitch type filter
 #pitch_filter = st.selectbox("Pick a pitch type to filter by.", pitcher_data['pitch_type'].unique())
 #pitcher_data = pitcher_data[pitcher_data['pitch_type'] == pitch_filter]
+
+desc_list = []
 
 # create pitch type filter
 pitch_types = ['All'] + list(pitcher_data['pitch_type'].unique())
