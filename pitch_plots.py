@@ -7,7 +7,6 @@ import pandas as pd
 st.title("Field Manager Pitch Plots")
 st.write(
     "Choose an MLB pitcher and game and see their pitches plotted for that game. "
-    "  \n  Currently 2025 spring training games don't work, so don't select them. "
 )
 # Notes on what the arguments for plot strike zone are
 #plot_strike_zone(data: pd.DataFrame, title: str = '', colorby: str = 'pitch_type', 
