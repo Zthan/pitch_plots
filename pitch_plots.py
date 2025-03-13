@@ -102,8 +102,9 @@ if pitch_filter != 'All':
 
 # create batter handedness filter
 stand_options = ['Both', 'Left-Handed Batters', 'Right-Handed Batters']
+stand_dict = {'Both': 'Both', 'Left-Handed Batters': 'L', 'Right-Handed Batters': 'R'}
 stand_filter = st.selectbox("Select batter handedness.", stand_options)
-
+stand_filter = stand_dict[stand_filter]
 if stand_filter != 'Both':
     pitcher_data = pitcher_data[pitcher_data['stand'] == stand_filter]
 
