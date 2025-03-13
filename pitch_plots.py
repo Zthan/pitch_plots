@@ -98,4 +98,5 @@ if pitch_filter != 'All':
     pitcher_data = pitcher_data[pitcher_data['pitch_type'] == pitch_filter]
 
 plot_img = plot_strike_zone(pitcher_data, title=f"{entered_name} - {entered_game}", colorby='pitch_type', legend_title='pitch_type', annotation=entered_colorby)
-st.pyplot(plot_img.figure)
+if st.button("Let's go already!"):
+    st.pyplot(plot_img.figure)
