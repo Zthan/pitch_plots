@@ -9,12 +9,12 @@ st.write(
     "Choose an MLB pitcher and game and see their pitches plotted for that game. "
     "  \n  Color By Options for the plot are as follows: "
     "  \n  Pitch Type: Fastball, Curveball, Slider, etc. "
-    "  \n  Description: ball, strike, hit into play"
-    "  \n  Release Speed: speed of pitch at release"
-    "  \n  Launch Speed: speed of the ball off the bat"
-    "  \n  Hit Distance: How far the pitch was hit"
-    "  \n  BB Type: What kind of contact was made. Fly ball, ground ball, etc"
-    "  \n  Release Extension: How far the pitcher extends their arm at release"
+    "  \n  Description: ball, strike, hit into play."
+    "  \n  Release Speed: Speed of pitch out of the pitchers hand."
+    "  \n  Launch Speed: Speed of the ball off the bat"
+    "  \n  Hit Distance: How far the ball traveled in the air."
+    "  \n  BB Type: What kind of contact was made. Fly ball, ground ball, etc."
+    "  \n  Release Extension: How far the pitcher extends their arm at release."
 )
 # Notes on what the arguments for plot strike zone are
 #plot_strike_zone(data: pd.DataFrame, title: str = '', colorby: str = 'pitch_type', 
