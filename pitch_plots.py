@@ -101,9 +101,24 @@ pitcher_data = statcast_pitcher(game_date, game_date, mlbam_id)
 #pitch_filter = st.selectbox("Pick a pitch type to filter by.", pitcher_data['pitch_type'].unique())
 #pitcher_data = pitcher_data[pitcher_data['pitch_type'] == pitch_filter]
 
-desc_list = []
+event_type_list = ['Hit Events', 'Out Events', 'Three True Outcome Events']
+hit_events = ['single', 'double', 'triple', 'home_run']
+out_events = ['field_out', 'force_out', 'grounded_into_double_play', 'fielders_choice_out', 'sac_fly', 'double_play', 'sac_bunt', 'sac_fly_double_play', 'triple_play']
+three_true_outcome_events = ['strikeout', 'walk', 'home_run']
+
+if entered_colorby == 'events':
+    event_type = st.selectbox('Select Event Types', event_type_list)
+    if event_type == 'Hit Events':
+        pitcher_data = pitcher_data[pitcher_data['events'].isin(hit_events)]
+    elif event_type == 'Out Events':
+        pitcher_data = pitcher_data[pitcher_data['events'].isin(out_events)]
+    elif event_type == 'Three True Outcome Events':
+        pitcher_data = pitcher_data[pitcher_data['events'].isin(three_true_outcome_events)]
+
 
 # create pitch type filter
+
+
 pitch_types = ['All'] + list(pitcher_data['pitch_type'].unique())
 pitch_filter = st.selectbox("Pick a pitch type to filter by.", pitch_types)
 
