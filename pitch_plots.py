@@ -81,7 +81,8 @@ filtered_game_list = game_list[game_list['pitcher'] == mlbam_id]
 entered_game = st.selectbox("Pick a game to plot.", filtered_game_list['option'])
 
 # make colorby options selectable
-colorby_options = ['pitch_type', 'description', 'release_speed', 'launch_speed', 'hit_distance_sc']
+colorby_options = ['pitch_type', 'description', 'release_speed', 'launch_speed', 'hit_distance_sc',
+                   'bb_type', 'hit_distance', 'release_extension']
 entered_colorby = st.selectbox("Pick a Color By option.", colorby_options)
 
 # Create pitch plot, capture image, and display
@@ -98,6 +99,13 @@ pitch_filter = st.selectbox("Pick a pitch type to filter by.", pitch_types)
 
 if pitch_filter != 'All':
     pitcher_data = pitcher_data[pitcher_data['pitch_type'] == pitch_filter]
+
+# create batter handedness filter
+stand_options = ['Both', 'L', 'R']
+stand_filter = st.selectbox("Select batter handedness.", stand_options)
+
+if stand_filter != 'Both':
+    pitcher_data = pitcher_data[pitcher_data['stand'] == stand_filter]
 
 plot_img = plot_strike_zone(pitcher_data, title=f"{entered_name} - {entered_game}", colorby='pitch_type', legend_title='pitch_type', annotation=entered_colorby)
 if st.button("Let's go already!"):
