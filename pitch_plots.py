@@ -7,6 +7,14 @@ import pandas as pd
 st.title("Field Manager Pitch Plots")
 st.write(
     "Choose an MLB pitcher and game and see their pitches plotted for that game. "
+    "  \n  Color By Options for the plot are as follows: "
+    "  \n  Pitch Type: Fastball, Curveball, Slider, etc. "
+    "  \n  Description: ball, strike, hit into play"
+    "  \n  Release Speed: speed of pitch at release"
+    "  \n  Launch Speed: speed of the ball off the bat"
+    "  \n  Hit Distance: How far the pitch was hit"
+    "  \n  BB Type: What kind of contact was made. Fly ball, ground ball, etc"
+    "  \n  Release Extension: How far the pitcher extends their arm at release"
 )
 # Notes on what the arguments for plot strike zone are
 #plot_strike_zone(data: pd.DataFrame, title: str = '', colorby: str = 'pitch_type', 
@@ -82,7 +90,7 @@ entered_game = st.selectbox("Pick a game to plot.", filtered_game_list['option']
 
 # make colorby options selectable
 colorby_options = ['pitch_type', 'description', 'release_speed', 'launch_speed', 'hit_distance_sc',
-                   'bb_type', 'hit_distance', 'release_extension']
+                   'bb_type', 'release_extension']
 entered_colorby = st.selectbox("Pick a Color By option.", colorby_options)
 
 # Create pitch plot, capture image, and display
