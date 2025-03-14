@@ -78,6 +78,7 @@ game_list['option'] = game_list['game_date'] + ' - ' + game_list['Matchup']
 game_list.sort_values(by='game_date', ascending=True, inplace=True)
 filtered_game_list = game_list[game_list['pitcher'] == mlbam_id]
 
+
 # Ensure the filtered_game_list has the necessary columns
 #if 'game_date' in filtered_game_list.columns and 'matchup' in filtered_game_list.columns:
     # Create a list of formatted game dates and matchups
