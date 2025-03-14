@@ -9,7 +9,7 @@ st.write(
     "Choose an MLB pitcher and game and see their pitches plotted for that game. "
     "  \n  Color By Options for the plot are as follows: "
     "  \n  Pitch Type: Fastball, Curveball, Slider, etc. "
-    "  \n  Description: ball, strike, hit into play."
+    "  \n  Events: Select the kind of events you want displayed."
     "  \n  Release Speed: Speed of pitch out of the pitchers hand."
     "  \n  Launch Speed: Speed of the ball off the bat"
     "  \n  Hit Distance: How far the ball traveled in the air."
