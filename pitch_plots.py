@@ -55,7 +55,11 @@ full_names.sort()
 #full_names = [s.title() for s in full_names]
 
 # Default player selection
-default_index = full_names.index('Spencer Schwellenbach')
+if 'Spencer Schwellenbach' in full_names:
+    default_index = full_names.index('Spencer Schwellenbach')
+else:
+    default_index = 0  # Default to the first player in the list if not found
+
 entered_name = st.selectbox("Pick an MLB Player.", full_names, index=default_index)
 mlbam_id = player_dict[entered_name]
 
