@@ -55,8 +55,10 @@ full_names.sort()
 #full_names = [s.title() for s in full_names]
 
 # Default player selection
-if 'Paul Skenes' in full_names:
-    default_index = full_names.index('Paul Skenes')
+starting_name = 'Paul Skenes'
+starting_name_encoded = starting_name.encode('utf-8-sig')
+if starting_name_encoded in full_names:
+    default_index = full_names.index(starting_name_encoded)
 else:
     default_index = 0  # Default to the first player in the list if not found
 
