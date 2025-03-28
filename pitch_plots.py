@@ -56,7 +56,7 @@ full_names.sort()
 
 # Default player selection
 starting_name = 'Paul Skenes'
-starting_name_encoded = starting_name.encode('utf-8-sig')
+starting_name_encoded = starting_name.encode('utf-8').decode('utf-8')
 if starting_name_encoded in full_names:
     default_index = full_names.index(starting_name_encoded)
 else:
