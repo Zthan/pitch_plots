@@ -55,8 +55,8 @@ full_names.sort()
 #full_names = [s.title() for s in full_names]
 
 # Default player selection
-if 'Spencer Schwellenbach' in full_names:
-    default_index = full_names.index('Spencer Schwellenbach')
+if 'Paul Skenes' in full_names:
+    default_index = full_names.index('Paul Skenes')
 else:
     default_index = 0  # Default to the first player in the list if not found
 
