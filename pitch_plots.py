@@ -32,7 +32,7 @@ st.write(
 
 
 # Get pitchers for this year and last 3 years
-data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_player_list.csv', encoding='utf-8-sig')
+data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_player_list.csv')
 
 # Get full names of players
 #full_names = data.apply(lambda row: f"{row['name_first']} {row['name_last']}", axis=1).tolist()
@@ -56,9 +56,9 @@ full_names.sort()
 
 # Default player selection
 starting_name = ' Paul Skenes'
-starting_name_encoded = starting_name.encode('utf-8').decode('utf-8')
-if starting_name_encoded in full_names:
-    default_index = full_names.index(starting_name_encoded)
+#starting_name_encoded = starting_name.encode('utf-8').decode('utf-8')
+if starting_name in full_names:
+    default_index = full_names.index(starting_name)
 else:
     default_index = 0  # Default to the first player in the list if not found
 
