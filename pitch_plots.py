@@ -32,7 +32,7 @@ st.write(
 
 
 # Get pitchers for this year and last 3 years
-data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_player_list.csv')
+data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/heads/main/pitch_plot_player_list.csv', encoding='utf-8-sig')
 
 # Get full names of players
 #full_names = data.apply(lambda row: f"{row['name_first']} {row['name_last']}", axis=1).tolist()
