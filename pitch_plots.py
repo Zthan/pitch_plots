@@ -41,6 +41,7 @@ data = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/refs/hea
 
 data['Full Name'] = data['name_first'] + ' ' + data['name_last']
 data['Full Name'] = data['Full Name'].str.title()
+data['Full Name'] = data['Full Name'].str.lstrip()
 #full_names = pitching_data.apply(lambda row: f"{row['name_first']} {row['name_last']}", axis=1)#.tolist()
 
 # Create a dictionary of player names and their MLBAM IDs
@@ -55,7 +56,7 @@ full_names.sort()
 #full_names = [s.title() for s in full_names]
 
 # Default player selection
-starting_name = ' Paul Skenes'
+starting_name = 'Paul Skenes'
 #starting_name_encoded = starting_name.encode('utf-8').decode('utf-8')
 if starting_name in full_names:
     default_index = full_names.index(starting_name)
