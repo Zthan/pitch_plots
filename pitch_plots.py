@@ -82,7 +82,7 @@ game_list = pd.read_csv('https://raw.githubusercontent.com/Zthan/pitch_plots/ref
 # Filter game_list based on mlbam id of entered name
 game_list['game_date'] = pd.to_datetime(game_list['game_date']).dt.strftime('%Y-%m-%d')
 game_list['option'] = game_list['game_date'] + ' - ' + game_list['Matchup']
-game_list.sort_values(by='game_date', ascending=True, inplace=True)
+game_list.sort_values(by='game_date', ascending=False, inplace=True)
 filtered_game_list = game_list[game_list['pitcher'] == mlbam_id]
 
 
